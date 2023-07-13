@@ -18,8 +18,8 @@ function saludo() {
 switch (reservas) {
     case "si":
         nombreYapellido = prompt("Ingrese su nombre y apellido porfavor");
-        cantidadPersonas = prompt("Ingrese cantidad de personas");
-        horario = prompt("Ingrese horario" + " " + "(" + horario1 + " " + horario2 + " " + horario3 + " " + horario4 + " " + horario5 + " " + horario6 + " " + horario7 + " " + horario8 + ")");
+        cantidadPersonas = parseInt(prompt("Ingrese cantidad de personas"));
+        horario = parseInt(prompt("Ingrese horario" + " " + "(" + horario1 + " " + horario2 + " " + horario3 + " " + horario4 + " " + horario5 + " " + horario6 + " " + horario7 + " " + horario8 + ")"));
         switch (horario) {
             case "19hs":
                 saludo();
