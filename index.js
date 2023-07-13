@@ -8,7 +8,7 @@ const horario3 = ("20hs");
 const horario4 = ("20:30hs");
 const horario5 = ("21hs");
 const horario6 = ("21:30hs");
-const horario7= ("22hs");
+const horario7 = ("22hs");
 const horario8 = ("22:30hs");
 
 function saludo() {
@@ -19,7 +19,7 @@ switch (reservas) {
     case "si":
         nombreYapellido = prompt("Ingrese su nombre y apellido porfavor");
         cantidadPersonas = prompt("Ingrese cantidad de personas");
-        horario = prompt("Ingrese horario"+" "+"("+ horario1+" "+horario2+" "+horario3+" "+horario4+" "+horario5+" "+horario6+" "+horario7+" "+horario8+")");
+        horario = prompt("Ingrese horario" + " " + "(" + horario1 + " " + horario2 + " " + horario3 + " " + horario4 + " " + horario5 + " " + horario6 + " " + horario7 + " " + horario8 + ")");
         switch (horario) {
             case "19hs":
                 saludo();
@@ -49,6 +49,12 @@ switch (reservas) {
                 alert("El horario que ingreso no es correcto o no esta disponible")
                 break;
         }
+        let opinion = prompt("Ingrese aclaracion sobre la reserva o escriba fin");
+        while (opinion != "fin") {
+            alert("Gracias por su aclaracion");
+            opinion = prompt("Ingrese aclaracion sobre la reserva o escriba fin");
+        }
+        console.log("Fin del while");
         break;
     case "no":
         alert("Los esperamos pronto");
@@ -59,9 +65,4 @@ switch (reservas) {
 
 }
 
-let opinion = prompt ("Ingrese aclaracion sobre la reserva o escriba fin");
-while (opinion != "fin"){
-    alert("Gracias por su aclaracion");
-    opinion = prompt ("Ingrese aclaracion sobre la reserva o escriba fin");
-}
-console.log ("Fin del while");
+
