@@ -27,12 +27,13 @@ function saludo() {
 
 while (pregunta != "reservar" && pregunta != "pedido") {
     alert("Por favor ingresa reservar o pedido");
+    pregunta =prompt("Si desea hacer una reserva escriba reservar, si desea hacer un pedido escriba pedido")
 }
 
 if (pregunta == "pedido") {
     alert("A continuacion nuestra lista de productos");
     let todoslosProductos = productos.map((producto) => producto.nombre + " " + producto.precio + "$");
-    console.log(todoslosProductos.join(" \n "));
+    console.log (todoslosProductos.join(" \n "));
 
 } else if (pregunta == "reservar") {
     nombreYapellido = prompt("Ingrese su nombre y apellido porfavor");
