@@ -114,7 +114,6 @@ while (pregunta != "reservar") {
         })
         const total = carrito.reduce((acc, el) => acc + el.precio * el.unidades, 0);
         alert(`El total a pagar por su compra es: ${total}`);
-        break;
     }
 
 }
