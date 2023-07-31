@@ -33,7 +33,7 @@ while (pregunta != "reservar" && pregunta != "pedido") {
 if (pregunta == "pedido") {
     alert("A continuacion nuestra lista de productos");
     let todoslosProductos = productos.map((producto) => producto.nombre + " " + producto.precio + "$");
-    console.log (todoslosProductos.join(" \n "));
+    alert(todoslosProductos.join(" \n "));
 
 } else if (pregunta == "reservar") {
     nombreYapellido = prompt("Ingrese su nombre y apellido porfavor");
@@ -70,11 +70,12 @@ if (pregunta == "pedido") {
             break;
     }
 
-    let opinion = prompt("Ingrese aclaracion sobre la reserva o escriba fin");
-    while (opinion != "fin") {
+    let opinion = prompt("Si desea hacer una aclaracion sobre su reserva indiquelo aqui, de lo contrario escriba no");
+    if(opinion != "fin") {
         alert("Gracias por su aclaracion, los esperamos!");
+    } else {
+        alert("Los esperamos!")
     }
-    console.log("Fin del while");
 
 }
 
@@ -108,17 +109,16 @@ while (pregunta != "reservar") {
     }
     pregunta = prompt("Desea seguir comprando? \n escriba si o no")
     while (pregunta === "no") {
-        alert("Gracias por la compra!")
         carrito.forEach((carritoFinal) => {
             alert(`producto: ${carritoFinal.producto}, unidades:${carritoFinal.unidades}, total a pagar ${carritoFinal.unidades * carritoFinal.precio}`);
         })
         const total = carrito.reduce((acc, el) => acc + el.precio * el.unidades, 0);
-        alert(`El total a pagar por su compra es: ${total}`);
-    }
+        alert(`El total a pagar por su compra es: ${total}, gracias por su compra!`);
+    } 
 
 }
 
-console.log("Fin del while");
+
 
 
 
