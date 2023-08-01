@@ -1,13 +1,5 @@
 alert("Bienvenidos a Grey Bar");
-
-const horario1 = ("19hs");
-const horario2 = ("19:30hs");
-const horario3 = ("20hs");
-const horario4 = ("20:30hs");
-const horario5 = ("21hs");
-const horario6 = ("21:30hs");
-const horario7 = ("22hs");
-const horario8 = ("22:30hs");
+const horarios = ["19hs", "19:30hs", "20hs", "20:30hs", "21hs", "21:30hs", "22hs", "22:30hs"];
 
 const productos = [
     { nombre: "Grey Burger", precio: 1000 },
@@ -18,69 +10,19 @@ const productos = [
 
 let carrito = [];
 
-
-let pregunta = prompt("¿Desea hacer una reserva o desea realizar un pedido? \n Escriba reservar o pedido, porfavor");
-
 function saludo() {
     alert("Gracias" + " " + nombreYapellido + " " + "Los esperamos! Recuerden que tiene una tolerancia de 15 minutos maximo para tomar su reserva");
+};
+
+function finCompra() {
+    carrito.forEach((carritoFinal) => {
+        alert(`producto: ${carritoFinal.producto}, unidades:${carritoFinal.unidades}, total a pagar ${carritoFinal.unidades * carritoFinal.precio}`);
+    })
+    const total = carrito.reduce((acc, el) => acc + el.precio * el.unidades, 0);
+    alert(`El total a pagar por su compra es: ${total}, gracias por su compra!`);
 }
 
-while (pregunta != "reservar" && pregunta != "pedido") {
-    alert("Por favor ingresa reservar o pedido");
-    pregunta =prompt("Si desea hacer una reserva escriba reservar, si desea hacer un pedido escriba pedido")
-}
-
-if (pregunta == "pedido") {
-    alert("A continuacion nuestra lista de productos");
-    let todoslosProductos = productos.map((producto) => producto.nombre + " " + producto.precio + "$");
-    alert(todoslosProductos.join(" \n "));
-
-} else if (pregunta == "reservar") {
-    nombreYapellido = prompt("Ingrese su nombre y apellido porfavor");
-    cantidadPersonas = parseInt(prompt("Ingrese cantidad de personas"));
-    horario = prompt("Ingrese horario" + " " + "(" + horario1 + " " + horario2 + " " + horario3 + " " + horario4 + " " + horario5 + " " + horario6 + " " + horario7 + " " + horario8 + ")");
-
-    switch (horario) {
-        case "19hs":
-            saludo();
-            break;
-        case "19:30hs":
-            saludo();
-            break;
-        case "20hs":
-            saludo();
-            break;
-        case "20:30hs":
-            saludo();
-            break;
-        case "21hs":
-            saludo();
-            break;
-        case "21:30hs":
-            saludo();
-            break;
-        case "22hs":
-            saludo();
-            break;
-        case "22:30hs":
-            saludo();
-            break;
-        default:
-            alert("El horario que ingreso no es correcto o no esta disponible");
-            break;
-    }
-
-    let opinion = prompt("Si desea hacer una aclaracion sobre su reserva indiquelo aqui, de lo contrario escriba no");
-    if(opinion != "fin") {
-        alert("Gracias por su aclaracion, los esperamos!");
-    } else {
-        alert("Los esperamos!")
-    }
-
-}
-
-
-while (pregunta != "reservar") {
+function compra() {
     let producto = prompt("Agrega un producto a tu carrito");
     let precio = 0;
     if (producto == "Grey Burger" || producto == "The King Burger" || producto == "Lady Burger" || producto == "Big Grey") {
@@ -107,14 +49,68 @@ while (pregunta != "reservar") {
     } else {
         alert("No tenemos ese producto");
     }
-    pregunta = prompt("Desea seguir comprando? \n escriba si o no")
-    while (pregunta === "no") {
-        carrito.forEach((carritoFinal) => {
-            alert(`producto: ${carritoFinal.producto}, unidades:${carritoFinal.unidades}, total a pagar ${carritoFinal.unidades * carritoFinal.precio}`);
-        })
-        const total = carrito.reduce((acc, el) => acc + el.precio * el.unidades, 0);
-        alert(`El total a pagar por su compra es: ${total}, gracias por su compra!`);
-    } 
+    const seguirComprando = prompt("Desea seguir comprando? \n escriba si o no");
+    if (seguirComprando == "si") {
+        compra();
+    } else if (seguirComprando =="no"){
+        finCompra();
+    }
+
+}
+
+const pregunta = prompt("¿Desea hacer una reserva o un pedido? \n Escriba reservar o pedido porfavor");
+
+switch (pregunta) {
+    case "reservar":
+        nombreYapellido = prompt("Ingrese su nombre y apellido porfavor");
+        cantidadPersonas = parseInt(prompt("Ingrese cantidad de personas"));
+        horarios.forEach(Element => console.log(Element));
+        hora = prompt("Ingrese horario de la reserva");
+        switch (hora) {
+            case "19hs":
+                saludo();
+                break;
+            case "19:30hs":
+                saludo();
+                break;
+            case "20hs":
+                saludo();
+                break;
+            case "20:30hs":
+                saludo();
+                break;
+            case "21hs":
+                saludo();
+                break;
+            case "21:30hs":
+                saludo();
+                break;
+            case "22hs":
+                saludo();
+                break;
+            case "22:30hs":
+                saludo();
+                break;
+            default:
+                alert("El horario que ingreso no es correcto o no esta disponible");
+                break;
+        }
+        let opinion = prompt("Si desea hacer una aclaracion sobre su reserva indiquelo aqui, de lo contrario escriba no");
+        if (opinion != "no") {
+            alert("Gracias por su aclaracion, los esperamos!");
+        } else {
+            alert("Los esperamos!")
+        }
+        break;
+    case "pedido":
+        alert("A continuacion nuestra lista de productos");
+        let todoslosProductos = productos.map((producto) => producto.nombre + " " + producto.precio + "$");
+        console.log(todoslosProductos.join(" \n "));
+        compra()
+        break;
+    default:
+        alert("Ingrese reservar o pedido porfavor");
+        break;
 
 }
 
